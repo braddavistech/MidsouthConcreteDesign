@@ -8,13 +8,8 @@ import logo from '../logo.svg';
 
 const ImgCarousel = styled(Carousel)`
   margin: 0;
-  ${({ isMobile, isWider }) => !isMobile ? `
-    width: 95vw;
-    max-height: 90vh;
-  ` : `
-    width: 100vw;
-    height: calc(100vh - 80px);
-  `}
+  width: 100vw;
+  height: calc(100vh - 80px);
 `;
 
 const Image = styled.img`
@@ -25,24 +20,28 @@ const Image = styled.img`
 `;
 
 const Photos = (props) => {
+  console.warn({ props });
+  console.warn(props.isMobile);
+  const { isMobile, isWider } = props;
+  const showThumbs = !isMobile;
+  console.warn({ showThumbs });
   return (
     <div className='App'>
       <header className='App-header'>
-        <ImgCarousel
+        <Carousel
+          className='carousel-main'
           infiniteLoop
           autoPlay
           showArrows={false}
           interval={3000}
           transitionTime={900}
-          showThumbs={!props.isMobile}
-          isMobile={props.isMobile}
-          isWider={props.isWider}
-          stopOnHover={!props.isMobile}
+          showThumbs={showThumbs}
+          isMobile={isMobile}
+          isWider={isWider}
+          stopOnHover={showThumbs}
         >
-          {props.images.map(indivImage => <div>
-            <Image alt='' src={indivImage} />
-          </div>)}
-        </ImgCarousel>
+          {props.images.map(indivImage => <img alt='' src={indivImage} />)}
+        </Carousel>
       </header>
     </div>
   );

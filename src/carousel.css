@@ -1,9 +1,27 @@
+.carousel-main {
+  margin: 0;
+  width: 100vw;
+  height: calc(100vh - 80px);
+}
+
+.carousel .slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+/* .slide>img {
+  height: calc(100% - 150px);
+  width: 100%;
+  object-fit: scale-down;
+} */
+
 .slider-wrapper {
   height: 100%;
 }
 
 .carousel-slider {
-  height: 100%;
+  height: calc(100% - 150px);
 }
 
 .slider {
